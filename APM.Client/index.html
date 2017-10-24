@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Acme Product Management</title>
+
+    <!-- Style sheets -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body ng-app="productManagement"
+      ng-controller="mainCtrl as vm">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">Acme Product Management</div>
+                <form class="navbar-form navbar-right"
+                      ng-hide="vm.isLoggedIn()">
+                    <div class="form-group">
+                        <input class="form-control"
+                               type="text"
+                               placeholder="username (email)"
+                               ng-model="vm.userData.email" />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control"
+                               type="password"
+                               placeholder="password"
+                               ng-model="vm.userData.password" />
+                    </div>
+                    <button class="btn btn-default"
+                            type="submit"
+                            ng-click="vm.OnLoginClick()">
+                        LogIn
+                    </button>
+                    <button class="btn btn-default"
+                            type="submit"
+                            ng-click="vm.OnRegisterClick()">
+                        Register
+                    </button>
+                    <div ng-show="vm.message">{{vm.message}}</div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+         <!--<div ng-if="vm.isLoggedIn()"
+            ng-include="'app/products/productsList/productsListView.html'"></div>-->
+        <div ng-if="vm.isLoggedIn()"
+                 ng-include="'app/products/productEdit/productEditView.html'"></div>
+    </div>
+
+    <!-- Library Scripts START-->
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <!-- Library Scripts END-->
+
+    <!-- APP SCRIPTS START-->
+    <script src="app/app.js"></script>
+    <!-- APP SCRIPTS END-->
+
+    <!-- SERVICES START -->
+    <script src="app/common/common.services.js"></script>
+    <!-- Services User -->
+    <script src="app/common/services/userAccount.js"></script>
+    <script src="app/common/services/currentUser.js"></script>
+    <!-- Services Products -->
+    <script src="app/common/services/productResource.js"></script>
+    <!-- SERVICES END -->
+
+    <!-- CONTROLLERS START-->
+    <script src="app/main/mainCtrl.js"></script>
+    <!-- Product Controllers -->
+    <script src="app/products/productsList/productsListCtrl.js"></script>
+    <script src="app/products/productEdit/productEditCtrl.js"></script>
+    <!-- CONTROLLERS END-->
+
+    <script src="Scripts/_references.js"></script>
+</body>
+
+</html>
